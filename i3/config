@@ -35,6 +35,7 @@ bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl -q set 3%+
 #exec feh --bg-fill --randomize ~/images/*
 exec feh --bg-scale /home/dfalcon/images/wallpaper-master/first-collection/arch.png
 exec xset m 22/10 0
+exec --no-startup-id blueberry &
 exec --no-startup-id flameshot &
 exec --no-startup-id xautolock -time 15 -corners ---- -locker "systemctl suspend" &
 exec --no-startup-id google-chrome-stable

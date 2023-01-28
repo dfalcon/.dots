@@ -365,8 +365,8 @@ label = %output%
 ;format-prefix = "%{T2}VPN%{T-}  "
 ;format-prefix-foreground = ${colors.icon-prefix}
 exec = ~/.config/polybar/scripts/openvpn/openvpn
-click-left = exec ~/.config/polybar/scripts/polybar/openvpn/openvpn up
-click-right = exec ~/.config/polybar/scripts/polybar/openvpn/openvpn down
+click-left = exec ~/.config/polybar/scripts/openvpn/openvpn up
+click-right = exec ~/.config/polybar/scripts/openvpn/openvpn down
 interval = 1
 
 [module/battery]
