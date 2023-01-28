@@ -81,7 +81,7 @@ font-4 = NotoEmoji:scale=9;
 
 
 modules-left = i3 xwindow
-modules-center = date
+modules-center = date spotify
 modules-right = xkeyboard windscribe openvpn pulseaudio backlight cpu memory filesystem temperature consumation battery
 
 cursor-click = pointer
@@ -368,6 +368,20 @@ exec = ~/.config/polybar/scripts/openvpn/openvpn
 click-left = exec ~/.config/polybar/scripts/openvpn/openvpn up
 click-right = exec ~/.config/polybar/scripts/openvpn/openvpn down
 interval = 1
+
+[module/spotify]
+type = custom/script
+interval = 1
+format-prefix = "%{F#1db954}%{F-}  "
+;format-prefix = "  "
+;format-prefix-foreground = ${colors.icon-prefix}
+format = <label>
+exec = python ~/.config/polybar/scripts/spotify_control.py -f '{artist}: {song}'
+format-underline = #1db954
+;control players (optional)
+double-click-left = playerctl --player=spotify play-pause 
+click-left = playerctl --player=spotify next 
+click-right = playerctl --player=spotify previous 
 
 [module/battery]
 type = internal/battery
