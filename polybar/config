@@ -229,25 +229,6 @@ label-urgent-padding = 1
 ;label-separator-padding = 2
 ;label-separator-foreground = #ffb52a
 
-[module/xworkspaces]
-type = internal/xworkspaces
-
-label-active = %name%
-label-active-background = ${colors.background-alt}
-label-active-underline= ${colors.primary}
-label-active-padding = 1
-
-label-occupied = %name%
-label-occupied-padding = 1
-
-label-urgent = %name%
-label-urgent-background = ${colors.alert}
-label-urgent-padding = 1
-
-label-empty = %name%
-label-empty-foreground = ${colors.disabled}
-label-empty-padding = 1
-
 [module/xwindow]
 type = internal/xwindow
 label-maxlen = 100
@@ -310,38 +291,6 @@ format-prefix-foreground = ${colors.icon-prefix}
 ;label = %gb_used%/%gb_free%
 label = %gb_used%
 
-[module/menu-apps]
-type = custom/menu
-
-; If true, <label-toggle> will be to the left of the menu items (default).
-; If false, it will be on the right of all the items.
-expand-right = true
-; "menu-LEVEL-N" has the same properties as "label-NAME" with
-; the additional "exec" property
-;
-; Commands will be executed using "/bin/sh -c $COMMAND"
-label-open = Apps
-label-close = x
-
-; Optional item separator
-; Default: none
-label-separator = |
-format-prefix = "%{T2}%{T-}  "
-menu-0-0 = Browsers
-menu-0-0-exec = #menu-apps.open.1
-menu-0-1 = Multimedia
-menu-0-1-exec = #menu-apps.open.2
-
-menu-1-0 = Firefox
-menu-1-0-exec = firefox
-menu-1-1 = Chromium
-menu-1-1-exec = chromium
-
-menu-2-0 = Gimp
-menu-2-0-exec = gimp
-menu-2-1 = Scrot
-menu-2-1-exec = scrot
-
 [module/consumation]
 type = custom/script
 format-prefix = "%{T3}%{T-}  "
@@ -367,23 +316,11 @@ label = %output%
 exec = ~/.config/polybar/scripts/openvpn/openvpn
 click-left = exec ~/.config/polybar/scripts/openvpn/openvpn up
 click-right = exec ~/.config/polybar/scripts/openvpn/openvpn down
-interval = 1
-
-[module/spotify]
-type = custom/script
-interval = 1
-format-prefix = "%{F#1db954}%{F-}  "
-format = <label>
-exec = python ~/.config/polybar/scripts/spotify_control.py -f '{artist}: {song}'
-format-underline = #1db954
-
-double-click-left = playerctl --player=spotify play-pause 
-click-left = playerctl --player=spotify next 
-click-right = playerctl --player=spotify previous
+interval = 2
 
 [module/spotifyGO]
 type = custom/script
-interval = 1
+interval = 2
 format-prefix = "%{F#1db954}%{F-}  "
 format = <label>
 format-underline = #1db954
@@ -539,11 +476,6 @@ ramp-signal-3 = 😊
 ramp-signal-4 = 😃
 ramp-signal-5 = 😈
 ;label-connected = %{F#F0C674}%ifname%%{F-} %essid% %local_ip%
-
-[module/eth]
-inherit = network-base
-interface-type = wired
-label-connected = %{F#F0C674}%ifname%%{F-} %local_ip%
 
 [module/date]
 type = internal/date
