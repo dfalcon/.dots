@@ -81,8 +81,8 @@ font-4 = NotoEmoji:scale=9;
 
 
 modules-left = i3 xwindow
-modules-center = date spotifyGO
-modules-right = xkeyboard windscribe openvpn pulseaudio backlight cpu memory filesystem temperature consumation battery
+modules-center = customDate spotifyGO
+modules-right = xkeyboard windscribe openvpn pulseaudio backlight cpu memory filesystem temperature consumation battery powerManagment
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -308,6 +308,27 @@ click-left = exec ~/.config/polybar/scripts/windscribe/windscribe connect
 click-right = exec ~/.config/polybar/scripts/windscribe/windscribe disconnect
 interval = 10
 
+[module/powerManagment]
+type = custom/text
+content = "%{T2} %{T-}  "
+content-foreground = ${colors.icon-prefix}
+click-left = exec reboot
+click-right = exec shutdown now
+;click-left = exec google-chrome-stable https://calendar.google.com/calendar/u/0/r/month
+;click-right = exec subl
+
+[module/customDate]
+type = custom/script
+label = %output%
+format-prefix = " %{T2}%{T-} "
+;format-suffix = " %{T2}%{T-}"
+format-prefix-foreground = ${colors.icon-prefix}
+;format-suffix-foreground = ${colors.icon-prefix}
+exec = date '+%a %d %b %T'
+click-right = exec shutdown now
+click-left = exec google-chrome-stable https://calendar.google.com/calendar/u/0/r/month
+interval = 1
+
 [module/openvpn]
 type = custom/script
 label = %output%
@@ -320,16 +341,16 @@ interval = 2
 
 [module/spotifyGO]
 type = custom/script
-interval = 2
+interval = 1
 format-prefix = "%{F#1db954}%{F-}  "
 format = <label>
 format-underline = #1db954
 
 exec = ~/.config/polybar/scripts/spotify/spotify
 exec-if = pgrep spotify
-double-click-left = ~/.config/polybar/scripts/spotify/spotify play-pause
-click-left = ~/.config/polybar/scripts/spotify/spotify next
-click-right = ~/.config/polybar/scripts/spotify/spotify previous
+click-left = ~/.config/polybar/scripts/spotify/spotify play-pause
+click-right = ~/.config/polybar/scripts/spotify/spotify next
+click-middle = ~/.config/polybar/scripts/spotify/spotify previous
 scroll-up = ~/.config/polybar/scripts/spotify/spotify volume-up
 scroll-down = ~/.config/polybar/scripts/spotify/spotify volume-down
 
@@ -481,7 +502,7 @@ ramp-signal-5 = 😈
 type = internal/date
 interval = 1
 
-date = %d/%m %a %H:%M
+date = %d/%m %a %H:%M:%S
 date-alt = %d-%m-%Y %H:%M:%S
 
 label = %date%

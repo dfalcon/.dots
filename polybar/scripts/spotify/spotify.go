@@ -21,7 +21,12 @@ func main() {
 		stdout, _ = cmd.Output()
 		title := string(stdout)
 		result := strings.Replace(artist+" - "+title, "\n", "", -1)
-		fmt.Println(result)
+		if len(result) > 100 {
+			fmt.Println(result[0:100] + "...")
+		} else {
+			fmt.Println(result)
+		}
+
 	} else {
 		action := os.Args[1]
 		switch action {
