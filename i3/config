@@ -33,7 +33,8 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl --min-val=2 -q 
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl -q set 3%+
 #exec feh --bg-scale /home/dfalcon/images/1.jpg
 #exec feh --bg-fill --randomize ~/images/*
-exec feh --bg-scale /home/dfalcon/images/wallpaper-master/first-collection/arch.png
+exec feh --bg-fill --randomize ~/images/NG_Wallpaper/* 
+#exec feh --bg-scale /home/dfalcon/images/wallpaper-master/first-collection/arch.png
 exec xset m 22/10 0
 exec --no-startup-id blueberry &
 exec --no-startup-id flameshot &
@@ -185,7 +186,7 @@ bindsym $mod+Shift+3 move container to workspace number $ws3
 bindsym $mod+Shift+4 move container to workspace number $ws4
 bindsym $mod+Shift+5 move container to workspace number $ws5
 bindsym $mod+Shift+6 move container to workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+7 move container to workspace number $ws7%
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
@@ -242,4 +243,6 @@ set $darkgray #1d2021
 #bar {
 #    status_command i3blocks
 #}
+# Picom
+exec_always --no-startup-id picom &amp;
 exec_always --no-startup-id ~/.config/polybar/launch.sh &amp;

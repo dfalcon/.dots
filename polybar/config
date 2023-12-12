@@ -48,6 +48,7 @@ icon-prefix= ${colors.cyan}
 alert = #ff5555
 
 [bar/example]
+monitor = ${env:MONITOR:}
 bottom = false
 width = 100%
 height = 30
@@ -60,7 +61,7 @@ foreground = ${colors.foreground}
 
 line-size = 3
 
-border-size = 3pt
+border-size = 0pt
 border-color = #00000000
 
 ;padding-left = 0
