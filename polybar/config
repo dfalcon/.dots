@@ -71,7 +71,7 @@ module-margin = 1
 
 
 separator = |
-separator-foreground = ${colors.disabled}
+separator-foreground = ${colors.background-alt}
 
 font-0 = "JetBrainsMono:size=10;2"
 font-1 = siji:pixelsize=10;1
@@ -83,7 +83,7 @@ font-4 = NotoEmoji:scale=9;
 
 modules-left = i3 xwindow
 modules-center = customDate spotifyGO
-modules-right = xkeyboard windscribe openvpn pulseaudio backlight cpu memory filesystem temperature consumation battery powerManagment
+modules-right = xkeyboard openvpn pulseaudio backlight cpu memory filesystem temperature consumation battery powerManagment
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -255,7 +255,7 @@ format-mounted = <label-mounted>
 format-mounted-prefix = "%{T3}%{T-}  "
 format-mounted-prefix-foreground = ${colors.icon-prefix}
 label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.disabled}
+label-unmounted-foreground = ${colors.background-alt}
 
 [module/pulseaudio]
 type = internal/pulseaudio
