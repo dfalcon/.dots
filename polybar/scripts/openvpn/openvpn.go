@@ -22,7 +22,7 @@ func main() {
 	} else {
 		action := os.Args[1]
 
-		cmd := exec.Command("nmcli", "connection", action, "dfalcon")
+		cmd := exec.Command("nmcli", "connection", action, "laptop")
 		cmd.Output()
 	}
 

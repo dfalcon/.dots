@@ -24,28 +24,28 @@ font pango:monospace 8
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 exec xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
 #exec setxkbmap "us,ru" ",winkeys" "grp:alt_shift_toggle"
 exec_always "setxkbmap -model pc104 -layout us,ru,ua -variant ,, -option grp:alt_shift_toggle"
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl --min-val=2 -q set 3%-
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl -q set 3%+
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl --min-val=2 -q set 5%-
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl -q set 5%+
 #exec feh --bg-scale /home/dfalcon/images/1.jpg
 #exec feh --bg-fill --randomize ~/images/*
-exec feh --bg-fill --randomize ~/images/NG_Wallpaper/* 
+exec feh --bg-fill --randomize ~/Pictures/Wallpapers/cyberpunk/* 
 #exec feh --bg-scale /home/dfalcon/images/wallpaper-master/first-collection/arch.png
 exec xset m 22/10 0
 exec --no-startup-id blueberry &
 exec --no-startup-id flameshot &
-exec --no-startup-id xautolock -time 15 -corners ---- -locker "systemctl suspend" &
-exec --no-startup-id google-chrome-stable
+#exec --no-startup-id xautolock -time 15 -corners ---- -locker "systemctl suspend" &
+exec --no-startup-id firefox
 exec --no-startup-id spotify
-exec --no-startup-id telegram-desktop
-exec --no-startup-id /home/dfalcon/Downloads/timedoctor-desktop_3.12.15_linux-x86_64.AppImage --no-sandbox &
+exec --no-startup-id Telegram
+exec --no-startup-id /home/dfalcon/Downloads/timedoctor-desktop_3.12.16_linux-x86_64.AppImage --no-sandbox &
 bindsym Print exec --no-startup-id flameshot gui
 
-for_window [class="Google Chrome"] move to workspace $ws1
+for_window [class="Mozilla Firefox"] move to workspace $ws1
 for_window [class="Telegram"] move to workspace $ws10
 for_window [class="Time Doctor"] move to workspace $ws10
 for_window [class="Spotify"] move to workspace $ws9
@@ -58,11 +58,11 @@ for_window [title   = "^.*"] border pixel 0
 # Сочетания клавиш и что они делают
 set $mode_display On of Display port Screen (r) right side, (l) left side, (t) top side, (b) bottom side, (o) Off display port
 mode "$mode_display" {
-    bindsym r exec --no-startup-id xrandr --output DP-1 --auto --right-of eDP-1, mode "default"
-    bindsym t exec --no-startup-id xrandr --output DP-1 --auto --above eDP-1, mode "default"
-    bindsym l exec --no-startup-id xrandr --output DP-1 --auto --left-of eDP-1, mode "default"
-    bindsym b exec --no-startup-id xrandr --output DP-1 --auto --below eDP-1, mode "default"
-    bindsym o exec --no-startup-id xrandr --output DP-1 --auto --off, mode "default"
+    bindsym r exec --no-startup-id xrandr --output DP-1 --auto --right-of eDP-1 --mode 1920x1080 --rate 100
+    bindsym t exec --no-startup-id xrandr --output DP-1 --auto --above eDP-1, --mode 1920x1080 --rate 100
+    bindsym l exec --no-startup-id xrandr --output DP-1 --auto --left-of eDP-1 --mode 1920x1080 --rate 100
+    bindsym b exec --no-startup-id xrandr --output DP-1 --auto --below eDP-1 --mode 1920x1080 --rate 100
+    bindsym o exec --no-startup-id xrandr --output DP-1 --auto --off
 
     # выход: Enter или Escape
     bindsym Return mode "default"
@@ -86,7 +86,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec xfce4-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -186,7 +186,7 @@ bindsym $mod+Shift+3 move container to workspace number $ws3
 bindsym $mod+Shift+4 move container to workspace number $ws4
 bindsym $mod+Shift+5 move container to workspace number $ws5
 bindsym $mod+Shift+6 move container to workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7%
+bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
