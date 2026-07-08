@@ -67,23 +67,25 @@ border-color = #00000000
 ;padding-left = 0
 ;padding-right = 1
 
-module-margin = 1
+module-margin = 0
 
 
 separator = |
 separator-foreground = ${colors.background-alt}
 
-font-0 = "JetBrainsMono:size=10;2"
+font-0 = "JetBrainsMono Nerd Font:size=10;2"
 font-1 = siji:pixelsize=10;1
 font-2 = "FontAwesome:size=10;2"
 font-3 = "FontAwesome:size=30;7"
-font-4 = NotoEmoji:scale=9;
+font-4 = "Weather Icons:size=12;2"
+font-5 = NotoEmoji:scale=9;
+;font-6 = "JetBrainsMono Nerd Font:size=11;3"
 
 
 
 modules-left = i3 xwindow
-modules-center = customDate spotifyGO
-modules-right = xkeyboard openvpn pulseaudio backlight brightness2 cpu temperature memory filesystem consumation battery powerManagment
+modules-center = weather customDate spotifyGO
+modules-right = xkeyboard openvpn pulseaudio backlight cpu temperature memory filesystem consumation battery powerManagment
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -101,12 +103,18 @@ wm-restack = i3
 
 ;override-redirect = true
 
+[module/weather]
+type = custom/script
+exec = /home/dfalcon/.config/polybar/weather.sh
+tail = false
+interval = 600
+
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
 interval = 0.5
 zone-type = x86_pkg_temp
-format-prefix = "%{T3}%{T-}  " 
+format-prefix = " %{T3}%{T-} " 
 format-prefix-foreground = ${colors.icon-prefix}
 
 
@@ -238,7 +246,7 @@ label = %title:0:60:...%
 
 [module/backlight]
 type = internal/backlight
-format-prefix = "%{T3}%{T-}  " 
+format-prefix = "%{T3}%{T-} " 
 format-prefix-foreground = ${colors.icon-prefix}
 card = intel_backlight
 use-actual-brightness = true
@@ -247,10 +255,10 @@ enable-scroll = true
 [module/brightness2]
 type = custom/script
 exec = ~/.config/polybar/brightness.sh
-interval = 0
+interval = 120
 
 ;label = " %output%"
-format-prefix = "%{T3}%{T-}  "
+format-prefix = "%{T3}%{T-} "
 format-prefix-foreground = ${colors.icon-prefix}
 format-volume-prefix-foreground = ${colors.icon-prefix}
 
@@ -266,7 +274,7 @@ mount-0 = /
 ;label-mounted = %{F#F0C674}%mountpoint%%{F-} %percentage_used%%
 label-mounted = %free%
 format-mounted = <label-mounted>
-format-mounted-prefix = "%{T3}%{T-}  "
+format-mounted-prefix = "%{T3}%{T-} "
 format-mounted-prefix-foreground = ${colors.icon-prefix}
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.background-alt}
@@ -274,7 +282,7 @@ label-unmounted-foreground = ${colors.background-alt}
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume-prefix = "%{T3}%{T-}  "
+format-volume-prefix = "%{T3}%{T-} "
 format-volume-prefix-foreground = ${colors.icon-prefix}
 format-volume = <label-volume>
 
@@ -288,7 +296,7 @@ type = internal/xkeyboard
 blacklist-0 = num lock
 
 label-layout = %layout%
-format-prefix = "%{T3}%{T-}  "
+format-prefix = "%{T3}%{T-} "
 format-prefix-foreground = ${colors.icon-prefix}
 label-layout-foreground = ${colors.foreground}
 
@@ -300,7 +308,7 @@ label-indicator-background = ${colors.secondary}
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = "%{T3}%{T-}  "
+format-prefix = "%{T3}%{T-} "
 format-prefix-foreground = ${colors.icon-prefix}
 ;label = %percentage_used:2%%
 ;label = %gb_used%/%gb_free%
@@ -308,7 +316,7 @@ label = %gb_used%
 
 [module/consumation]
 type = custom/script
-format-prefix = "%{T3}%{T-}  "
+format-prefix = "%{T3}%{T-} "
 format-prefix-foreground = ${colors.icon-prefix}
 exec = ~/.config/polybar/scripts/power.sh
 interval = 2
@@ -316,7 +324,7 @@ interval = 2
 [module/windscribe]
 type = custom/script
 label = %output%
-format-prefix = "%{T2}%{T-}  "
+format-prefix = "%{T2}%{T-} "
 format-prefix-foreground = ${colors.icon-prefix}
 exec = ~/.config/polybar/scripts/windscribe/windscribe status
 click-left = exec ~/.config/polybar/scripts/windscribe/windscribe connect
@@ -325,7 +333,7 @@ interval = 10
 
 [module/powerManagment]
 type = custom/text
-content = "%{T2} %{T-}  "
+content = "%{T2} %{T-} "
 content-foreground = ${colors.icon-prefix}
 click-left = exec reboot
 click-right = exec shutdown now
@@ -347,7 +355,7 @@ interval = 1
 [module/openvpn]
 type = custom/script
 label = %output%
-;format-prefix = "%{T2}VPN%{T-}  "
+;format-prefix = "%{T2}VPN%{T-} "
 ;format-prefix-foreground = ${colors.icon-prefix}
 exec = ~/.config/polybar/scripts/openvpn/openvpn
 click-left = exec ~/.config/polybar/scripts/openvpn/openvpn up
@@ -478,7 +486,7 @@ full-at = 100
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = "%{T3}  %{T-}"
+format-prefix = "%{T3} %{T-}"
 format-prefix-foreground = ${colors.icon-prefix}
 label = %percentage:2%%
 

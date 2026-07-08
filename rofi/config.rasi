@@ -1,11 +1,11 @@
-/*Dracula theme based on the Purple official rofi theme*/
+/* Tokyo Night */
 
 * {
-    font: "Jetbrains Mono 12";
-    foreground: #f8f8f2;
-    background-color: #282a36;
-    active-background: #6272a4;
-    urgent-background: #ff5555;
+    font: "JetBrainsMono Nerd Font 11";
+    foreground: #c0caf5;
+    background-color: #1a1b26;
+    active-background: #7aa2f7;
+    urgent-background: #f7768e;
     selected-background: @active-background;
     selected-urgent-background: @urgent-background;
     selected-active-background: @active-background;
