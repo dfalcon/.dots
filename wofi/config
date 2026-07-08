@@ -1,0 +1,14 @@
+# Show multiple modes in sidebar
+show = drun,run
+sidebar_mode = true
+allow_images = true
+
+# Window behavior
+normal_window = true
+#single_click = true
+hide_scroll = true
+lines = 10
+width = 40%
+
+# Search behavior
+insensitive = true

@@ -1,0 +1,38 @@
+/* Tokyo Night */
+window {
+  background-color: #1a1b26;
+  border: 1px solid #565f89;
+  border-radius: 8px;
+}
+
+#input {
+  background-color: #24283b;
+  color: #c0caf5;
+  border: 1px solid #565f89;
+  border-radius: 4px;
+  padding: 6px 10px;
+  margin: 8px;
+}
+
+#inner-box {
+  background-color: #1a1b26;
+}
+
+#outer-box {
+  padding: 4px;
+}
+
+#entry {
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: #c0caf5;
+}
+
+#entry:selected {
+  background-color: #7aa2f7;
+  color: #1a1b26;
+}
+
+#text {
+  color: inherit;
+}
