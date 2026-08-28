@@ -12,7 +12,11 @@
   --text-color: rgb(192, 202, 245);
   --text-color-disabled: rgb(86, 95, 137);
   --bg-selected: rgb(122, 162, 247);
-  --notification-icon-size: 64px;
+  --noti-bg-alt: rgb(59, 66, 97);
+  --tn-red: rgb(247, 118, 142);
+  --tn-yellow: rgb(224, 175, 104);
+  --tn-green: rgb(158, 206, 106);
+  --notification-icon-size: 56px;
   --notification-app-icon-size: calc(var(--notification-icon-size) / 3);
   --notification-group-icon-size: 32px;
   --border: 1px solid var(--noti-border-color);
@@ -93,6 +97,8 @@ notificationwindow, blankwindow {
 
 .notification-row .notification-background .notification.low {
   /* Low Priority Notification */
+  opacity: 0.85;
+  border-color: rgba(86, 95, 137, 0.35);
 }
 
 .notification-row .notification-background .notification.normal {
@@ -101,6 +107,11 @@ notificationwindow, blankwindow {
 
 .notification-row .notification-background .notification.critical {
   /* Critical Priority Notification */
+  border-color: var(--tn-red);
+}
+
+.notification-row .notification-background .notification.critical .notification-default-action .notification-content .text-box .summary {
+  color: var(--tn-red);
 }
 
 .notification-row .notification-background .notification .notification-default-action {
@@ -136,9 +147,10 @@ notificationwindow, blankwindow {
   /* Notification Primary Image */
   -gtk-icon-filter: none;
   -gtk-icon-size: var(--notification-icon-size);
-  border-radius: 100px;
+  border-radius: 12px;
   /* Size in px */
-  margin: 4px;
+  margin: 0;
+  padding: 4px;
 }
 
 .notification-row .notification-background .notification .notification-default-action .notification-content .app-icon {
@@ -256,14 +268,16 @@ notificationwindow, blankwindow {
 
 .notification-group.low {
   /* Low Priority Group */
+  opacity: 0.85;
 }
 
 .notification-group.normal {
-  /* Low Priority Group */
+  /* Normal Priority Group */
 }
 
 .notification-group.critical {
-  /* Low Priority Group */
+  /* Critical Priority Group */
+  border-color: var(--tn-red);
 }
 
 .notification-group .notification-group-close-button .close-button {
@@ -396,6 +410,10 @@ notificationwindow, blankwindow {
   border-radius: var(--border-radius);
 }
 
+.widget-dnd switch:checked {
+  background-color: var(--bg-selected);
+}
+
 /* Label widget */
 .widget-label > label {
   font-size: 1.1rem;
@@ -472,6 +490,8 @@ notificationwindow, blankwindow {
 
 .widget-buttons-grid flowboxchild > button.toggle:checked {
   /* style given to the active toggle button */
+  background-color: var(--bg-selected);
+  color: var(--noti-bg-darker);
 }
 
 /* Menubar widget */

@@ -1,0 +1,77 @@
+# ponytail: whitelist — репо публічне, тож ігноруємо все,
+# крім явно дозволеного. Нову теку конфігів додавати сюди руками.
+/*
+!.gitignore
+!README.md
+
+# WM / панелі
+!alacritty/
+!dunst/
+!hypr/
+!i3/
+!i3blocks/
+!i3status/
+!kitty/
+!picom.conf
+!polybar/
+!rofi/
+!swaync/
+!waybar/
+!wofi/
+!nwg-look/
+!nwg-displays/
+!autostart/
+!menus/
+
+# shell / cli
+!fish/
+!omf/
+!mc/
+!btop/
+!htop/
+!fastfetch/
+!neofetch/
+!lazygit/
+!lazydocker/
+!nano/
+!git/
+!procps/
+!s-tui/
+
+# desktop / медіа
+!gtk-3.0/
+!gtk-4.0/
+!Thunar/
+!mpv/
+!imv/
+!feh/
+!easyeffects/
+!pipewire/
+!flameshot/
+!sublime-text/
+!mimeapps.list
+!user-dirs.dirs
+!pavucontrol.ini
+!QtProject.conf
+!EOS-greeter.conf
+
+# systemd user units + env
+!systemd/
+!environment.d/
+
+# скрипти
+!libinput-gestures.conf
+!libinput-gestures-resume.sh
+
+# сміття всередині дозволеного
+*.bak
+*_bk
+sublime-text/Lib/
+sublime-text/Local/
+sublime-text/Log/
+sublime-text/Installed Packages/
+sublime-text/Cache/
+sublime-text/Index/
+
+# секрети — не в публічний репо
+polybar/openweather

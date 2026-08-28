@@ -1,0 +1,11 @@
+[options]
+overlay = true
+overlay_font = Monospace:16
+overlay_position_bottom = true
+overlay_background_alpha = c0
+overlay_text = [${imv_current_index}/${imv_file_count}] $(identify -format '%f  %wx%h  %[EXIF:DateTimeOriginal]  %[EXIF:Model]' "$imv_current_file" 2>/dev/null)
+
+[binds]
+<Ctrl+r> = rotate by -90
+<Ctrl+R> = rotate by 90
+<Ctrl+Shift+R> = rotate by 90

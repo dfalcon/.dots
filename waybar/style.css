@@ -3,6 +3,18 @@
   font-size: 20px;
 }
 
+#custom-power {
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 18px;
+  padding-left: 8px;
+  padding-right: 8px;
+  transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+#custom-power:hover {
+  background: @bg_hover;
+  color: #f7768e;
+}
+
 /* Tokyo Night */
 @define-color bg_main rgba(26, 27, 38, 0.85);
 @define-color bg_main_tooltip rgba(22, 22, 30, 0.92);
@@ -197,3 +209,19 @@ tooltip label{
 #clock:hover {
   background: @bg_hover;
 }
+
+/* Tokyo Night — акценты по модулям (иконка+текст).
+   battery и custom-temp не трогаем: у них цвет зависит от состояния. */
+#pulseaudio      { color: #7dcfff; }  /* cyan   */
+#cpu             { color: #7aa2f7; }  /* blue   */
+#memory          { color: #bb9af7; }  /* purple */
+#memory.warning  { color: #ff9e64; }  /* orange, >80% занято */
+#memory.critical { color: #f7768e; }  /* red,    >90% занято */
+#disk            { color: #e0af68; }  /* yellow */
+#disk.warning    { color: #ff9e64; }  /* orange, >90% занято */
+#disk.critical   { color: #f7768e; }  /* red,    >95% занято */
+#custom-mouse    { color: #9ece6a; }  /* green  */
+#network         { color: #ff9e64; }  /* orange */
+#language        { color: #ff9e64; }  /* orange */
+#clock           { color: #7aa2f7; }  /* blue   */
+#custom-swaync   { color: #bb9af7; }  /* purple */
