@@ -44,10 +44,6 @@
 !flameshot/
 !sublime-text/
 !mimeapps.list
-!user-dirs.dirs
-!pavucontrol.ini
-!QtProject.conf
-!EOS-greeter.conf
 
 # systemd user units + env
 !systemd/
