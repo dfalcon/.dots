@@ -48,6 +48,7 @@
 # systemd user units + env
 !systemd/
 !environment.d/
+!xdg-desktop-portal/
 
 # скрипти
 !libinput-gestures.conf
