@@ -4,17 +4,11 @@
 !.gitignore
 !README.md
 
-# WM / панелі
+# WM / панелі  (i3, polybar, rofi, picom, dunst викинуто 28.08.2026 —
+#               стек мертвий з переходу на Hyprland/waybar/wofi/swaync)
 !alacritty/
-!dunst/
 !hypr/
-!i3/
-!i3blocks/
-!i3status/
 !kitty/
-!picom.conf
-!polybar/
-!rofi/
 !swaync/
 !waybar/
 !wofi/
