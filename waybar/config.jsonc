@@ -27,6 +27,7 @@
     "bluetooth",
     "network",
     "pulseaudio",
+    "custom/powerprofile",
     "cpu",
     "battery",
     "custom/swaync"
@@ -135,6 +136,17 @@
       "🌕"
     ]
   },
+  // Профіль живлення (intel_pstate EPP). Клік — наступний по колу.
+  // 󰌪 економія · 󰾅 баланс · 󰓅 продуктивність
+  "custom/powerprofile": {
+    "exec": "~/.config/waybar/power-profile.sh",
+    "return-type": "json",
+    "interval": 5,
+    "signal": 9,
+    "on-click": "~/.config/waybar/power-profile.sh toggle",
+    "tooltip": true
+  },
+
   "cpu": {
     "interval": 10,
     "format": " {usage}%",

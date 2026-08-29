@@ -225,3 +225,19 @@ tooltip label{
 #language        { color: #ff9e64; }  /* orange */
 #clock           { color: #7aa2f7; }  /* blue   */
 #custom-swaync   { color: #bb9af7; }  /* purple */
+
+/* Профіль живлення (intel_pstate EPP): колір підказує режим.
+   Клік по модулю — наступний профіль по колу. */
+#custom-powerprofile {
+    padding: 0 10px;
+    margin: 0 2px;
+}
+#custom-powerprofile.power-saver {
+    color: #9ece6a;   /* зелений — економія */
+}
+#custom-powerprofile.balanced {
+    color: #7aa2f7;   /* синій — баланс */
+}
+#custom-powerprofile.performance {
+    color: #f7768e;   /* червоний — продуктивність */
+}

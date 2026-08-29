@@ -19,6 +19,10 @@ local mainMod  = "SUPER"
 
 hl.on("hyprland.start", function()
     hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
+    -- DPI для XWayland: з force_zero_scaling X11-додатки бачать голі 3072x1920
+    -- без даних про масштаб і вважають DPI=96. Steam ("масштабувати відповідно
+    -- до налаштувань монітора"), Java та GTK-X11 читають саме Xft.dpi.
+    hl.exec_cmd("xrdb -merge ~/.Xresources")
     hl.exec_cmd("/usr/lib/xdg-desktop-portal-hyprland")
     hl.exec_cmd("/usr/lib/xdg-desktop-portal --replace")
     hl.exec_cmd("/usr/lib/hyprpolkitagent/hyprpolkitagent")
@@ -47,8 +51,8 @@ end)
 -------------------------------
 
 hl.env("MOZ_ENABLE_WAYLAND", "1")
-hl.env("XCURSOR_SIZE", "24")
-hl.env("HYPRCURSOR_SIZE", "24")
+hl.env("XCURSOR_SIZE", "32")
+hl.env("HYPRCURSOR_SIZE", "32")
 hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
 hl.env("XDG_SESSION_TYPE", "wayland")
 
@@ -105,6 +109,14 @@ hl.config({
 
     master = {
         new_status = "master",
+    },
+
+    -- XWayland на HiDPI: без цього X11-додатки (Steam, TLauncher, Java)
+    -- малюються в 1x і розтягуються композитором до scale 1.6 -> мило.
+    -- З force_zero_scaling вони отримують нативні 3072x1920 і рендерять різко,
+    -- але стають дрібними -> масштаб задається кожному окремо через env.
+    xwayland = {
+        force_zero_scaling = true,
     },
 
     misc = {
@@ -349,6 +361,9 @@ hl.window_rule({
     no_focus = true,
 })
 
+-- УВАГА: no_focus тут БУВ і ламав модальні діалоги — у діалогу довіри до
+-- проекту title теж порожній, правило ловило і його. Лишаємо тільки
+-- no_initial_focus: тултипи не крадуть фокус при появі, але діалог клікається.
 -- Тултипи JetBrains — окремі toplevel'и з порожнім title, крадуть фокус → блимає рамка
 hl.window_rule({
     name  = "jetbrains-tooltip-nofocus",
@@ -357,7 +372,6 @@ hl.window_rule({
         title = "^$",
     },
     no_initial_focus = true,
-    no_focus = true,
     no_anim  = true,
     float       = true,
     move        = "cursor_x+12 cursor_y+20",

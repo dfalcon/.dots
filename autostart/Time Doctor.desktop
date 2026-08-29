@@ -3,6 +3,6 @@ Type=Application
 Version=1.0
 Name=Time Doctor
 Comment=Time Doctor startup script
-Exec=/home/dfalcon/Downloads/timedoctor-desktop_3.12.16_wayland_linux-x86_64.AppImage --no-sandbox
+Exec=/home/dfalcon/Downloads/timedoctor-desktop_3.12.16_wayland_linux-x86_64.AppImage
 StartupNotify=false
 Terminal=false

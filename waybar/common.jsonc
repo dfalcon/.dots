@@ -18,6 +18,7 @@
   ],
   "modules-right": [
     "pulseaudio",
+    "custom/powerprofile",
     "cpu",
     "custom/temp",
     "memory",
@@ -69,6 +70,17 @@
     "tooltip": false,
     "on-click": "wlogout"
   },
+  // Профіль живлення (intel_pstate EPP). Клік — наступний по колу.
+  // 󰌪 економія · 󰾅 баланс · 󰓅 продуктивність
+  "custom/powerprofile": {
+    "exec": "~/.config/waybar/power-profile.sh",
+    "return-type": "json",
+    "interval": 5,
+    "signal": 9,
+    "on-click": "~/.config/waybar/power-profile.sh toggle",
+    "tooltip": true
+  },
+
   "cpu": {
     "interval": 5,
     "format": "  {usage}%",
