@@ -44,6 +44,8 @@
 !flameshot/
 !sublime-text/
 !mimeapps.list
+# тема Tokyonight для libcosmic (cosmic-files); секретів нема, лише кольори
+!cosmic/
 
 # systemd user units + env
 !systemd/
@@ -63,6 +65,8 @@ sublime-text/Log/
 sublime-text/Installed Packages/
 sublime-text/Cache/
 sublime-text/Index/
+# заглушка від cosmic-settings-daemon для cosmic-comp (layout us) — у нас композитор Hyprland
+cosmic/com.system76.CosmicComp/
 
 # секрети — не в публічний репо
 polybar/openweather

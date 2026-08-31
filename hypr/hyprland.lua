@@ -26,6 +26,8 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("/usr/lib/xdg-desktop-portal-hyprland")
     hl.exec_cmd("/usr/lib/xdg-desktop-portal --replace")
     hl.exec_cmd("/usr/lib/hyprpolkitagent/hyprpolkitagent")
+    -- роздає конфіг/тему по dbus застосункам на libcosmic (cosmic-files), без нього вони беруть стокову палітру
+    hl.exec_cmd("/usr/bin/cosmic-settings-daemon")
     hl.exec_cmd("nm-applet")
     hl.exec_cmd("waybar")
     hl.exec_cmd("swaync")
@@ -55,6 +57,7 @@ hl.env("XCURSOR_SIZE", "32")
 hl.env("HYPRCURSOR_SIZE", "32")
 hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
 hl.env("XDG_SESSION_TYPE", "wayland")
+hl.env("QT_QPA_PLATFORMTHEME", "gtk3")
 
 -----------------------
 ---- LOOK AND FEEL ----
