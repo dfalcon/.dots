@@ -39,13 +39,14 @@ hl.on("hyprland.start", function()
     -- виставляє розкладку вікну на фокусі — кожне вікно памʼятає свою мову.
     hl.exec_cmd("hyprland-per-window-layout")
     hl.exec_cmd("hypridle")
-    hl.exec_cmd("~/Pictures/Wallpapers/wallpaper-rotator.sh -q \"laptop\" -c anime")
-    hl.exec_cmd("firefox")
+    hl.exec_cmd("~/Pictures/Wallpapers/wallpaper-rotator.sh -q \"nature\" -c general")
+    hl.exec_cmd("[workspace 1 silent] firefox")
     hl.exec_cmd("spotify")
     hl.exec_cmd("~/.config/hypr/spotify-notify.sh")
     hl.exec_cmd("Telegram")
     hl.exec_cmd(os.getenv("HOME") .. "/.config/hypr/tg-media-follow.py")
-    hl.exec_cmd("/home/dfalcon/Downloads/timedoctor-desktop_3.12.16_wayland_linux-x86_64.AppImage --no-sandbox")
+    -- ponytail: TD пише скріншот у ~/.config/Time Doctor/local перед відправкою; каталог зникає — без нього ENOENT і скріншотів нема
+    hl.exec_cmd([[sh -c 'mkdir -p "$HOME/.config/Time Doctor/local"; exec /home/dfalcon/Downloads/timedoctor-desktop_3.12.16_wayland_linux-x86_64.AppImage --no-sandbox']])
 end)
 
 -------------------------------
@@ -133,6 +134,12 @@ hl.config({
     },
 })
 
+-- Прямий скан-аут: фулскрін-вікно (гра) йде на дисплей повз композитор,
+-- без зайвої копії кадру. Критично на iGPU, де VRAM = системна пам'ять.
+hl.config({
+    render = { direct_scanout = 1 },
+})
+
 hl.curve("easeOutQuint",   { type = "bezier", points = { {0.23, 1},    {0.32, 1} } })
 hl.curve("easeInOutCubic", { type = "bezier", points = { {0.65, 0.05}, {0.36, 1} } })
 hl.curve("linear",         { type = "bezier", points = { {0, 0},       {1, 1}    } })
@@ -197,6 +204,9 @@ hl.gesture({ fingers = 4, direction = "up",         action = "close" })
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + D",      hl.dsp.exec_cmd(menu))
 
+-- Copilot-клавіша (шле SUPER+SHIFT+F23; keycode 201 бо F23 не мапиться в keysym)
+hl.bind(mainMod .. " + SHIFT + code:201", hl.dsp.exec_cmd(terminal .. " --directory ~ fish -C claude"))
+
 -- Вікна
 hl.bind(mainMod .. " + SHIFT + Q",     hl.dsp.window.close())
 hl.bind(mainMod .. " + F",             hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
@@ -209,7 +219,7 @@ hl.bind(mainMod .. " + P",             hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + E", hl.dsp.layout("togglesplit"))
 
 -- Блокування ($mod+Shift+L — як в i3)
-hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd("hyprctl switchxkblayout all 0 && hyprlock"))
+hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd("hyprctl switchxkblayout all 0 && systemd-cat -t hyprlock hyprlock"))
 
 -- Фокус — vim-стиль (як в i3: j=left, k=down, l=up, semicolon=right)
 -- + стрілки
@@ -308,11 +318,6 @@ hl.window_rule({
 })
 
 -- Автоприсвоєння воркспейсів (як for_window в i3)
-hl.window_rule({
-    name  = "ws-firefox",
-    match = { class = "^(firefox|Firefox)$" },
-    workspace = "1 silent",
-})
 hl.window_rule({
     name  = "ws-spotify",
     match = { class = "^(Spotify|spotify)$" },
