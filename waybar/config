@@ -1,30 +1,45 @@
-// Широкие мониторы — полный бар. Всё общее лежит в common.jsonc.
+// Всё общее лежит в common.jsonc.
+//
+// Трей на всех барах. Версия с одним треем проверена 31.08.2026 — ПКМ от этого
+// не починился, так что дело не в конкуренции dbusmenu-клиентов.
 [
   {
+    // Ноутбук — рабочий экран, полный бар и единственный трей.
     "include": ["~/.config/waybar/common.jsonc"],
-    // Усі DP-виходи: залежно від порту й USB-C режиму монітор може
-    // з'явитись як DP-1, DP-2 чи DP-3 — раніше був лише DP-1, і на DP-2
-    // бар просто не показувався.
-    "output": ["eDP-1", "DP-1", "DP-2", "DP-3"]
+    "output": "eDP-1"
   },
-  // HDMI-A-1 повёрнут (transform 3) => ширина 1080, модули не влезают.
   {
+    // 27" — полный бар, но без трея.
     "include": ["~/.config/waybar/common.jsonc"],
     "output": "HDMI-A-1",
+    "modules-right": [
+      "pulseaudio",
+      "custom/powerprofile",
+      "cpu",
+      "custom/temp",
+      "memory",
+      "battery",
+      "tray",
+      "hyprland/language",
+      "clock",
+      "custom/swaync",
+      "custom/power"
+    ]
+  },
+  {
+    // Портретный монитор (transform 3) => ширина 1080, модули не влезают.
+    // Порт может отдать его как DP-1/DP-2/DP-3 — перечисляем все.
+    "include": ["~/.config/waybar/common.jsonc"],
+    "output": ["DP-1", "DP-2", "DP-3"],
     "modules-left": [
         "hyprland/workspaces",
         "wlr/taskbar"
     ],
     "modules-center": [],
     "modules-right": [
-//      "pulseaudio",
-//      "custom/temp",
-//      "memory",
-//      "battery",
       "tray",
       "hyprland/language",
       "clock",
-//      "custom/swaync",
       "custom/power"
     ],
     // ponytail: без заголовков окон — они и съедали ширину; название в тултипе

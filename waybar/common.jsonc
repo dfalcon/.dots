@@ -22,7 +22,7 @@
     "cpu",
     "custom/temp",
     "memory",
-    "disk",
+    // "disk",
     "battery",
     // "custom/mouse",
     "tray",

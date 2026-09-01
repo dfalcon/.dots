@@ -236,8 +236,8 @@ tooltip label{
     color: #9ece6a;   /* зелений — економія */
 }
 #custom-powerprofile.balanced {
-    color: #7aa2f7;   /* синій — баланс */
+    color: #e0af68;   /* жовтий — баланс */
 }
 #custom-powerprofile.performance {
-    color: #f7768e;   /* червоний — продуктивність */
+    color: #7aa2f7;   /* синій — продуктивність */
 }
